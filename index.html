@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wecare</title>
+<link rel="stylesheet" href="style2.css">
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="" href="main.js">
+
+</head>
+<body>
+<section class="header">
+        
+        <nav>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="register.php">REGISTER</a></li>
+                    <li><a href="#">WECARE</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+					<li><a href="index.php?logout='1'" style="color: red;">LOGOUT</a></li>
+					<li><p><b>Welcome <strong><?php echo $_SESSION['username']; ?></strong></b></p> </li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        
+        <div class="text-box">
+            <h1>WECARE</h1>
+            <h2>“Connecting You to Quality Care.”</h2> <br>
+            <a href="contact.html" class="hero-btn" role="button">Visit Us to Know More</a>
+        </div>
+    </section>
+
+    <!-- campus -->
+<section class="campus">
+    <h1>Our Medical Team</h1>
+    <p><b>Our dedicated medical team offers comprehensive healthcare services, ensuring personalized treatment plans and access to state-of-the-art facilities for optimal patient care.</b></p>
+
+    <div class="row">
+        <div class="campus-col">
+            <div class="sprite doctor-sprite1"></div>
+            <div class="layer">
+                <h3>DR. ADITYA LAKRA</h3>
+            </div>
+        </div>
+        <div class="campus-col">
+            <div class="sprite doctor-sprite2"></div>
+            <div class="layer">
+                <h3>DR. ARVIND LAKRA</h3>
+            </div>
+        </div>
+        <div class="campus-col">
+            <div class="sprite doctor-sprite3"></div>
+            <div class="layer">
+                <h3>DR. ARPITA PURI</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!------ Call To Action ------>
+
+<section class="cta" style="background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('images/hospitalbg.jpg')">
+    
+    <h1>Take a step towards a healthier you—join us at WeCare and let our expert team support your wellness journey!</h1>
+     <a href="contact.html" class="hero-btn" role="button">CONTACT US</a>
+ 
+</section>    
+
+    <!-------- footer ---------->
+
+<section class="footer">
+<script>
+    // Check if the browser supports service workers
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        // Register the service worker
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => {
+            console.log('Service Worker registered successfully:', registration);
+          })
+          .catch(error => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+
+      // Add event listener for online/offline status
+      window.addEventListener('online', () => {
+        document.getElementById('offline-message').style.display = 'none';
+      });
+      window.addEventListener('offline', () => {
+        document.getElementById('offline-message').style.display = 'block';
+      });
+    } else {
+      console.warn('Service Worker is not supported in this browser.');
+    }
+  </script>
+
+        <h4>About Us</h4>
+        <p>At WeCare, we are committed to providing compassionate and comprehensive healthcare solutions. Our team of dedicated professionals strives to empower individuals on their health journeys, ensuring personalized care and support every step of the way.</p>
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>made by ADITYA LAKRA </p>
+        <div class="content">
+  	<!-- notification message -->
+  	<?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success" >
+      	<h3>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
+
+    <!-- logged in user information -->
+    <?php  if (isset($_SESSION['username'])) : ?>
+    	<p>WELCOME <strong><?php echo $_SESSION['username']; ?></strong></p>
+    	<p> <a href="index.php?logout='1'" style="color: red;">LOGOUT</a> </p>
+    <?php endif ?>
+</div>
+</section>   
+
+</body>
+</html>
